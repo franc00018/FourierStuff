@@ -20,6 +20,11 @@ chisquare.test <- function(DATA.hist,char.fun,...,alpha=0.05)
 	# Compute the test statistic using chi-square distribution
 	p.value <- pchisq(chisquare.stat<-sum((observed-expected)^2/expected),
 			df<-length(classes)-2,lower.tail=FALSE)
+	# Print output
+	cat("Chi-Square Test based on CF\n\nTest statistic: ",chisquare.stat,
+			"\nDegree of freedom: ",df,
+			"\nP-value: ",p.value,
+			"\nReject H0 with confidence level ",1-alpha,"?: ",p.value<alpha)
 	# Create the return list
 	list(chisquare.stat=chisquare.stat,df=df,reject=p.value<alpha,p.value=p.value)
 }
