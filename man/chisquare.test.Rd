@@ -2,16 +2,20 @@
 \alias{chisquare.test}
 \title{Pearson's Chi-Squared test based on the characteristic function}
 \usage{
-chisquare.test(DATA.hist, char.fun, ..., alpha = 0.05)
+chisquare.test(DATA.hist, FUN, ..., alpha = 0.05, method = "integral")
 }
 \arguments{
   \item{DATA.hist}{histogram object of the data}
 
-  \item{char.fun}{Characteristic function}
+  \item{FUN}{Characteristic function (integral) or
+  Saddlepoint distribution approximation (saddlepoint)}
 
-  \item{...}{Characteristic function arguments}
+  \item{...}{FUN arguments}
 
   \item{alpha}{tolerance level}
+
+  \item{method}{Method to approximate the distribution
+  function. "integral" or "saddlepoint"}
 }
 \value{
 A list containing the chi-square statistic, degree of
