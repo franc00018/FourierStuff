@@ -18,7 +18,7 @@ md.test <- function(param,data,t,FUN,empFUN,alpha=0.05)
 {
 	n <- length(data)
 	# Weight matrix
-	Q <- ginv(outer(t,t,function(j,k) FUN(j+k,param)-FUN(j,param)*FUN(k,param)))
+	Q <- MASS::ginv(outer(t,t,function(j,k) FUN(j+k,param)-FUN(j,param)*FUN(k,param)))
 	# Vector of differences
 	v <- sqrt(n) * (empFUN(t,data)-FUN(t,param))
 	md.stat <- t(v) %*% Q %*% v

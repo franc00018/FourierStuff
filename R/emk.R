@@ -11,8 +11,7 @@
 #' @author François Pelletier
 emk <- function(DATA,order=1:4)
 {
-	library(actuar)
-	m <- emm(DATA,1:4)
+	m <- actuar::emm(DATA,1:4)
 	c(m[1],
 			m[2]-m[1]^2,
 			m[3]-3*m[1]*m[2]+2*m[1]^2,

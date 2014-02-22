@@ -6,4 +6,6 @@ Author: Francois Pelletier
 Maintainer: Francois Pelletier <francois@francoispelletier.org>
 Description: This is a package gathering different functions to work with the
     characteristic function and Fourier transforms
+Depends:
+    actuar,MASS,multicore
 License: LGPL-3
