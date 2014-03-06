@@ -8,4 +8,5 @@ Description: This is a package gathering different functions to work with the
     characteristic function and Fourier transforms
 Depends:
     actuar,MASS,multicore
+LazyLoad: yes
 License: LGPL-3
