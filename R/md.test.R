@@ -12,7 +12,7 @@
 #' @param alpha tolerance level
 #' @return A list containing the chi-square statistic, 
 #' degree of freedom, hypothesis reject boolean and p.value
-#' 
+#' @export md.test
 #' @author François Pelletier
 md.test <- function(param,data,t,FUN,empFUN,alpha=0.05)
 {

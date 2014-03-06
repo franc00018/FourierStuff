@@ -10,6 +10,7 @@
 #' @param t Vector of transform variates
 #' @param DATA Vector of individual data
 #' @return A vector of CF values
+#' @export empCF
 #' @author François Pelletier
 empCF <- function(t,DATA)
 {

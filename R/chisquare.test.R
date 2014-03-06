@@ -13,6 +13,7 @@
 #' 
 #' @return A list containing the chi-square statistic, 
 #' degree of freedom, hypothesis reject boolean and p.value
+#' @export chisquare.test
 #' @author François Pelletier
 chisquare.test <- function(DATA.hist,FUN,...,alpha=0.05,method="integral")
 {

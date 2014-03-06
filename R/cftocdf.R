@@ -13,6 +13,7 @@
 #' @param wmax Upper bound for transform variate
 #' @param MSwindows Is OS Windows ? (use of fork() in *nix)
 #' @return Distribution function values evaluated on [min,max] range
+#' @export cftocdf
 #' @author François Pelletier
 cftocdf <- function(grid,char.fun,...,wmin=0,wmax=50,MSwindows=FALSE)
 {
@@ -23,9 +24,9 @@ cftocdf <- function(grid,char.fun,...,wmin=0,wmax=50,MSwindows=FALSE)
 	# Integrate for each grid point using parallel computation if available
 	if(!MSwindows)
 	{
-		unlist(multicore::mclapply(grid,
+		return(unlist(multicore::mclapply(grid,
 					function(x) 1/2-1/pi*
-								integrate(integrand,wmin,wmax,x,char.fun,...)$value))
+								integrate(integrand,wmin,wmax,x,char.fun,...)$value)))
 	}
 	else
 	{
@@ -35,5 +36,6 @@ cftocdf <- function(grid,char.fun,...,wmin=0,wmax=50,MSwindows=FALSE)
 		{
 			Fx[i] <- 1/2-1/pi*integrate(integrand,wmin,wmax,grid[i],char.fun,...)$value
 		}
+		return(Fx)
 	}
 }

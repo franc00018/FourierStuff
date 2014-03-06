@@ -15,6 +15,7 @@
 #' @return char.fun.t: characteristic function evaluated at t
 #' @return density.grid: density function grid
 #' @return density.value: density function evaluated on [min,max] range
+#' @export cftodensity.fft
 #' @author François Pelletier
 cftodensity.fft <- function(char.fun,n,min,max,param)
 {

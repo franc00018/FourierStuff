@@ -10,6 +10,7 @@
 #' @param t Vector of transform variates
 #' @param DATA Vector of individual data
 #' @return A vector of CGF values
+#' @export empCGF
 #' @author François Pelletier
 empCGF <- function(t,DATA)
 {

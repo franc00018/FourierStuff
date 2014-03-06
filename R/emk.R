@@ -8,6 +8,7 @@
 #' @param DATA a vector of individual data
 #' @param order order of the cumulant. Must be between 1 and 4.
 #' @return A vector of cumulants
+#' @export emk
 #' @author François Pelletier
 emk <- function(DATA,order=1:4)
 {

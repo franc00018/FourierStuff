@@ -1,9 +1,8 @@
-export(	
-		cftocdf,
-		cftodensity.fft,
-		chisquare.test,
-		emk,
-		empCF,
-		empCGF,
-		empMGF,
-		md.test)
+export(cftocdf)
+export(cftodensity.fft)
+export(chisquare.test)
+export(emk)
+export(empCF)
+export(empCGF)
+export(empMGF)
+export(md.test)
