@@ -21,17 +21,11 @@ md.test <- function(param,data,t,FUN,empFUN,alpha=0.05)
 	Q <- MASS::ginv(outer(t,t,function(j,k) FUN(j+k,param)-FUN(j,param)*FUN(k,param)))
 	# Vector of differences
 	v <- sqrt(n) * (empFUN(t,data)-FUN(t,param))
-	md.stat <- t(v) %*% Q %*% v
+	md.stat <- Re(as.vector(t(v) %*% Q %*% v))
 	# Compute the test statistic using chi-square distribution
 	p.value <- pchisq(md.stat,df<-length(t))
-	reject <- p.value >= alpha
-	# Print output
-	cat("Minimum distance test based on a transform\n\nTest statistic: ",md.stat,
-			"\nDegree of freedom: ",df,
-			"\nP-value: ",p.value,
-			"\nReject H0 with confidence level ",1-alpha,"?: ",reject)
 	# Create the return list
-	list(md.stat=md.stat,df=df,reject=reject,p.value=p.value)
+	list(md.stat=md.stat,df=df,p.value=p.value)
 }
 
 

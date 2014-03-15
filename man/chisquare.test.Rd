@@ -2,10 +2,10 @@
 \alias{chisquare.test}
 \title{Pearson's Chi-Squared test based on the characteristic function}
 \usage{
-chisquare.test(DATA.hist, FUN, ..., alpha = 0.05, method = "integral")
+chisquare.test(datahist, FUN, ..., alpha = 0.05, method = "integral")
 }
 \arguments{
-  \item{DATA.hist}{histogram object of the data}
+  \item{datahist}{histogram object of the data}
 
   \item{FUN}{Characteristic function (integral) or
   Saddlepoint distribution approximation (saddlepoint)}

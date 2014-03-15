@@ -1,10 +1,12 @@
 # Pearson's Chi-Squared test based on the characteristic function
 # 
 # Author: François Pelletier
+#
+# LGPL 3.0
 ###############################################################################
 
 #' Pearson's Chi-Squared test based on the characteristic function
-#' @param DATA.hist histogram object of the data
+#' @param datahist histogram object of the data
 #' @param FUN Characteristic function (integral) or 
 #' Saddlepoint distribution approximation (saddlepoint)
 #' @param ... FUN arguments
@@ -15,30 +17,26 @@
 #' degree of freedom, hypothesis reject boolean and p.value
 #' @export chisquare.test
 #' @author François Pelletier
-chisquare.test <- function(DATA.hist,FUN,...,alpha=0.05,method="integral")
+chisquare.test <- function(datahist,FUN,...,alpha=0.05,method="integral")
 {
 	# Compute expected values for each histogram breaks using the characteristic function
-	classes <- DATA.hist$breaks
+	classes <- datahist$breaks
+	observed <- datahist$counts
 	if(method=="integral")
 	{
 		expected <- diff(cftocdf(classes,FUN,...)*
-						sum(observed <- DATA.hist$counts))
+						sum(observed))
 	}
 	else if(method=="saddlepoint")
 	{
 		expected <- diff(FUN(classes,...)*
-						sum(observed <- DATA.hist$counts))
+						sum(observed))
 	}
-	
 	# Compute the test statistic using chi-square distribution
-	p.value <- pchisq(chisquare.stat<-sum((observed-expected)^2/expected),
-			df<-length(classes)-2,lower.tail=FALSE)
-	# Print output
-	cat("Chi-Square Test based on CF\n\nTest statistic: ",chisquare.stat,
-			"\nDegree of freedom: ",df,
-			"\nP-value: ",p.value,
-			"\nReject H0 with confidence level ",1-alpha,"?: ",p.value<alpha)
+	chisquare.stat<-sum((observed-expected)^2/expected)
+	df<-length(classes)-2
+	p.value <- pchisq(chisquare.stat,df,lower.tail=FALSE)
 	# Create the return list
-	list(chisquare.stat=chisquare.stat,df=df,reject=p.value<alpha,p.value=p.value)
+	list(chisquare.stat=chisquare.stat,df=df,p.value=p.value)
 }
 
