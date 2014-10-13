@@ -24,7 +24,7 @@ cftocdf <- function(grid,char.fun,...,wmin=0,wmax=50,MSwindows=FALSE)
 	# Integrate for each grid point using parallel computation if available
 	if(!MSwindows)
 	{
-		return(unlist(multicore::mclapply(grid,
+		return(unlist(mclapply(grid,
 					function(x) 1/2-1/pi*
 								integrate(integrand,wmin,wmax,x,char.fun,...)$value)))
 	}
